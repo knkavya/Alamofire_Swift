@@ -29,17 +29,7 @@ extension ViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserCell
-        
-        cell.preservesSuperviewLayoutMargins = false
-        cell.separatorInset = UIEdgeInsets.zero
-        cell.layoutMargins = UIEdgeInsets.zero
-        
-        let user = viewModelUser.userArray[indexPath.row]
-        cell.lblID.text = "ID : \(String(describing: user.id!))"
-        cell.lblTitle.text = "Title : \(String(describing: user.title!))"
-        let status = user.getStatusAndColor()
-        cell.lblStatus.text = "Status : \(String(describing: status.0))"
-        cell.backgroundColor = status.1
+        cell.userModel = viewModelUser.userArray[indexPath.row]
         return cell
         
     }
